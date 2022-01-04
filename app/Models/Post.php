@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable=[
+        'title',
+        'description',
+        'is_active'
+    ];
     //use HasFactory;
     public function comments()
     {
