@@ -9,10 +9,19 @@ class Post extends Model
 {
     //use HasFactory;
     public function comments(){
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class,'commentable');
     }
 
-    public function tags(){
-        return $this->belongsToMany(Tag::class);
+    public function setTitleAttribute($title)
+    {
+        $this->attributes['title']=strtoupper($title);
     }
+
+    public function setDescriptionAttribute($description)
+    {
+         $this->attributes['description']=strtoupper($description);
+    }
+    // public function tags(){
+    //     return $this->belongsToMany(Tag::class);
+    // }
 }
